@@ -396,3 +396,41 @@
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }
+
+/* ---------- Version 2 learning architecture ---------- */
+.atlas-card { position: relative; display: grid; gap: .5rem; border: 1px solid var(--color-border); background: var(--color-surface); padding: 1.5rem 1.5rem 2.75rem; transition: border-color .2s; }
+.atlas-card:hover { border-color: var(--color-primary); }
+.atlas-card small { font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--color-primary); }
+.atlas-card strong { font-family: var(--font-serif, Georgia, serif); font-size: 1.35rem; }
+.atlas-card p { font-size: .875rem; color: var(--color-muted-foreground); line-height: 1.6; }
+.atlas-card > svg { position: absolute; right: 1.25rem; bottom: 1.1rem; width: 1rem; color: var(--color-primary); }
+.v2-panel { border: 1px solid var(--color-border); background: var(--color-surface); padding: 1.75rem; }
+.v2-panel h2 { margin-top: .4rem; font-size: 1.5rem; }
+.mastery-tag { display: inline-flex; align-items: center; gap: .5rem; border: 1px solid var(--color-border); padding: .25rem .6rem; font-size: .72rem; font-weight: 600; white-space: nowrap; }
+.mastery-steps { display: inline-flex; gap: 2px; }
+.mastery-steps i { width: .7rem; height: .3rem; background: var(--color-surface-sunk); }
+.mastery-steps i.on { background: var(--color-primary); }
+.mastery-tag[data-level="4"] { border-color: var(--color-primary); color: var(--color-primary); }
+.profile-section { border-bottom: 1px solid var(--color-border); padding: 1.75rem 0; scroll-margin-top: 6rem; }
+.profile-section h2 { font-size: 1.35rem; }
+.profile-section p { margin-top: .5rem; color: var(--color-muted-foreground); line-height: 1.7; }
+.profile-links { margin-top: .75rem; display: flex; flex-wrap: wrap; gap: 1rem; font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--color-primary); }
+.source-frame { display: grid; aspect-ratio: 4/3; place-items: center; background: var(--color-surface-sunk); border: 1px solid var(--color-border); color: var(--color-muted-foreground); font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; }
+.source-meta { margin-top: 2rem; border-top: 1px solid var(--color-border); }
+.source-meta > div { display: grid; grid-template-columns: 11rem 1fr; gap: 1rem; border-bottom: 1px solid var(--color-border); padding: 1rem 0; }
+.source-meta dt { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--color-muted-foreground); }
+.timeline { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(11rem, 1fr); overflow-x: auto; border-top: 2px solid var(--color-primary); }
+.timeline button { display: grid; gap: .35rem; width: 100%; padding: 1.25rem 1rem 1rem; text-align: left; border-left: 1px solid var(--color-border); }
+.timeline button span { font-family: var(--font-serif, Georgia, serif); font-size: 1.1rem; color: var(--color-primary); }
+.timeline button strong { font-size: .85rem; }
+.timeline button[aria-pressed="true"] { background: var(--color-surface-sunk); box-shadow: inset 0 3px 0 var(--color-gold); }
+.map-canvas { position: relative; aspect-ratio: 4/3; background: radial-gradient(circle at 55% 75%, color-mix(in oklch, var(--color-primary) 18%, transparent), transparent 45%), var(--color-surface-sunk); border: 1px solid var(--color-border); }
+.map-canvas button { position: absolute; width: 1rem; height: 1rem; margin: -.5rem; border-radius: 999px; background: var(--color-primary); outline: 3px solid var(--color-surface); }
+.map-canvas button[aria-pressed="true"] { background: var(--color-gold); width: 1.4rem; height: 1.4rem; margin: -.7rem; }
+.map-label { position: absolute; font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--color-muted-foreground); }
+.compare-table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+.compare-table th, .compare-table td { border-bottom: 1px solid var(--color-border); padding: .9rem 1rem; text-align: left; vertical-align: top; }
+.compare-table thead th { font-family: var(--font-serif, Georgia, serif); font-size: 1.05rem; border-bottom: 2px solid var(--color-foreground); }
+.compare-table tbody th { font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--color-muted-foreground); width: 13rem; }
+.evidence-tag { display: inline-block; margin-top: .5rem; font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: .15rem .45rem; border: 1px solid var(--color-border); }
+@media (max-width: 640px) { .source-meta > div { grid-template-columns: 1fr; gap: .25rem; } }
