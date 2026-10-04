@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep the Academy front end data-driven through `src/data/academy.ts` so catalogue, detail, and learning views remain consistent.

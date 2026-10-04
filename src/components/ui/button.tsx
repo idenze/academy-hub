@@ -10,6 +10,9 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: "bg-primary text-primary-foreground shadow hover:bg-primary/90",
+        gold: "bg-gold text-night shadow hover:bg-gold-bright",
+        heroOutline: "border border-on-night-muted bg-transparent text-on-night hover:border-on-night hover:bg-on-night hover:text-night",
+        ink: "bg-night text-on-night shadow hover:bg-night-soft",
         destructive: "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
         outline:
           "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
