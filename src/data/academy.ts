@@ -1,0 +1,9 @@
+export const courses = [
+ {slug:"igbo-language-foundations",code:"IGB 101",title:"Igbo Language Foundations",subject:"Language",level:"Beginner",duration:"8 weeks",lessons:24,description:"Build a confident foundation in spoken and written Igbo through tone, vocabulary and everyday expression."},
+ {slug:"igbo-history-sources",code:"HIS 204",title:"Reading Igbo History Through Sources",subject:"History",level:"Intermediate",duration:"6 weeks",lessons:18,description:"Learn to interpret oral testimony, archival records and material culture with scholarly care."},
+ {slug:"cosmology-epistemology",code:"CUL 210",title:"Foundations of Igbo Cosmology",subject:"Culture",level:"Intermediate",duration:"7 weeks",lessons:20,description:"Examine traditional worldviews, moral philosophy, personhood and the structures of Odinani."},
+ {slug:"oral-history-methods",code:"RES 301",title:"Oral History & Community Research",subject:"Research",level:"Advanced",duration:"10 weeks",lessons:26,description:"Plan, conduct and preserve rigorous community-based interviews and field research."},
+ {slug:"proverbs-literature",code:"LIT 220",title:"Igbo Proverbs & Oral Literature",subject:"Language",level:"Intermediate",duration:"5 weeks",lessons:15,description:"Read proverbial language as literature, argument and a living record of social thought."},
+ {slug:"precolonial-governance",code:"HIS 260",title:"Pre-colonial Governance & Society",subject:"History",level:"Intermediate",duration:"8 weeks",lessons:22,description:"Study political authority, title systems, assemblies and community justice before colonial rule."},
+] as const;
+export const syllabus=["Language, sound and tone","Greetings, identity and kinship","Home, place and belonging","Verbs and sentence patterns","Listening across dialects","Conversation and final assessment"];
