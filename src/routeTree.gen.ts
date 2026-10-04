@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AccountRouteImport } from './routes/account'
 import { Route as CertificatesRouteImport } from './routes/certificates'
+import { Route as ExploreRouteImport } from './routes/explore'
 import { Route as InstructorsRouteImport } from './routes/instructors'
 import { Route as MyLearningRouteImport } from './routes/my-learning'
 import { Route as OnyeOziRouteImport } from './routes/onye-ozi'
@@ -19,9 +20,16 @@ import { Route as ProgrammesRouteImport } from './routes/programmes'
 import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as SearchRouteImport } from './routes/search'
 import { Route as AssessmentSlugRouteImport } from './routes/assessment.$slug'
+import { Route as CollectionsSlugRouteImport } from './routes/collections.$slug'
 import { Route as CoursesIndexRouteImport } from './routes/courses.index'
 import { Route as CoursesSlugRouteImport } from './routes/courses.$slug'
+import { Route as CulturesSlugRouteImport } from './routes/cultures.$slug'
 import { Route as LearnSlugRouteImport } from './routes/learn.$slug'
+import { Route as PathsIndexRouteImport } from './routes/paths.index'
+import { Route as PathsSlugRouteImport } from './routes/paths.$slug'
+import { Route as ProgrammesSlugRouteImport } from './routes/programmes.$slug'
+import { Route as RegionsSlugRouteImport } from './routes/regions.$slug'
+import { Route as SubjectsSlugRouteImport } from './routes/subjects.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -36,6 +44,11 @@ const AccountRoute = AccountRouteImport.update({
 const CertificatesRoute = CertificatesRouteImport.update({
   id: '/certificates',
   path: '/certificates',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExploreRoute = ExploreRouteImport.update({
+  id: '/explore',
+  path: '/explore',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InstructorsRoute = InstructorsRouteImport.update({
@@ -73,6 +86,11 @@ const AssessmentSlugRoute = AssessmentSlugRouteImport.update({
   path: '/assessment/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CollectionsSlugRoute = CollectionsSlugRouteImport.update({
+  id: '/collections/$slug',
+  path: '/collections/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CoursesIndexRoute = CoursesIndexRouteImport.update({
   id: '/courses/',
   path: '/courses/',
@@ -83,9 +101,39 @@ const CoursesSlugRoute = CoursesSlugRouteImport.update({
   path: '/courses/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CulturesSlugRoute = CulturesSlugRouteImport.update({
+  id: '/cultures/$slug',
+  path: '/cultures/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LearnSlugRoute = LearnSlugRouteImport.update({
   id: '/learn/$slug',
   path: '/learn/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PathsIndexRoute = PathsIndexRouteImport.update({
+  id: '/paths/',
+  path: '/paths/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PathsSlugRoute = PathsSlugRouteImport.update({
+  id: '/paths/$slug',
+  path: '/paths/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgrammesSlugRoute = ProgrammesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ProgrammesRoute,
+} as any)
+const RegionsSlugRoute = RegionsSlugRouteImport.update({
+  id: '/regions/$slug',
+  path: '/regions/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SubjectsSlugRoute = SubjectsSlugRouteImport.update({
+  id: '/subjects/$slug',
+  path: '/subjects/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -93,47 +141,71 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/account': typeof AccountRoute
   '/certificates': typeof CertificatesRoute
+  '/explore': typeof ExploreRoute
   '/instructors': typeof InstructorsRoute
   '/my-learning': typeof MyLearningRoute
   '/onye-ozi': typeof OnyeOziRoute
-  '/programmes': typeof ProgrammesRoute
+  '/programmes': typeof ProgrammesRouteWithChildren
   '/resources': typeof ResourcesRoute
   '/search': typeof SearchRoute
   '/assessment/$slug': typeof AssessmentSlugRoute
+  '/collections/$slug': typeof CollectionsSlugRoute
   '/courses/$slug': typeof CoursesSlugRoute
+  '/cultures/$slug': typeof CulturesSlugRoute
   '/learn/$slug': typeof LearnSlugRoute
+  '/paths/$slug': typeof PathsSlugRoute
+  '/programmes/$slug': typeof ProgrammesSlugRoute
+  '/regions/$slug': typeof RegionsSlugRoute
+  '/subjects/$slug': typeof SubjectsSlugRoute
   '/courses/': typeof CoursesIndexRoute
+  '/paths/': typeof PathsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/account': typeof AccountRoute
   '/certificates': typeof CertificatesRoute
+  '/explore': typeof ExploreRoute
   '/instructors': typeof InstructorsRoute
   '/my-learning': typeof MyLearningRoute
   '/onye-ozi': typeof OnyeOziRoute
-  '/programmes': typeof ProgrammesRoute
+  '/programmes': typeof ProgrammesRouteWithChildren
   '/resources': typeof ResourcesRoute
   '/search': typeof SearchRoute
   '/assessment/$slug': typeof AssessmentSlugRoute
+  '/collections/$slug': typeof CollectionsSlugRoute
   '/courses/$slug': typeof CoursesSlugRoute
+  '/cultures/$slug': typeof CulturesSlugRoute
   '/learn/$slug': typeof LearnSlugRoute
+  '/paths/$slug': typeof PathsSlugRoute
+  '/programmes/$slug': typeof ProgrammesSlugRoute
+  '/regions/$slug': typeof RegionsSlugRoute
+  '/subjects/$slug': typeof SubjectsSlugRoute
   '/courses': typeof CoursesIndexRoute
+  '/paths': typeof PathsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/account': typeof AccountRoute
   '/certificates': typeof CertificatesRoute
+  '/explore': typeof ExploreRoute
   '/instructors': typeof InstructorsRoute
   '/my-learning': typeof MyLearningRoute
   '/onye-ozi': typeof OnyeOziRoute
-  '/programmes': typeof ProgrammesRoute
+  '/programmes': typeof ProgrammesRouteWithChildren
   '/resources': typeof ResourcesRoute
   '/search': typeof SearchRoute
   '/assessment/$slug': typeof AssessmentSlugRoute
+  '/collections/$slug': typeof CollectionsSlugRoute
   '/courses/$slug': typeof CoursesSlugRoute
+  '/cultures/$slug': typeof CulturesSlugRoute
   '/learn/$slug': typeof LearnSlugRoute
+  '/paths/$slug': typeof PathsSlugRoute
+  '/programmes/$slug': typeof ProgrammesSlugRoute
+  '/regions/$slug': typeof RegionsSlugRoute
+  '/subjects/$slug': typeof SubjectsSlugRoute
   '/courses/': typeof CoursesIndexRoute
+  '/paths/': typeof PathsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -141,6 +213,7 @@ export interface FileRouteTypes {
     | '/'
     | '/account'
     | '/certificates'
+    | '/explore'
     | '/instructors'
     | '/my-learning'
     | '/onye-ozi'
@@ -148,14 +221,22 @@ export interface FileRouteTypes {
     | '/resources'
     | '/search'
     | '/assessment/$slug'
+    | '/collections/$slug'
     | '/courses/$slug'
+    | '/cultures/$slug'
     | '/learn/$slug'
+    | '/paths/$slug'
+    | '/programmes/$slug'
+    | '/regions/$slug'
+    | '/subjects/$slug'
     | '/courses/'
+    | '/paths/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/account'
     | '/certificates'
+    | '/explore'
     | '/instructors'
     | '/my-learning'
     | '/onye-ozi'
@@ -163,14 +244,22 @@ export interface FileRouteTypes {
     | '/resources'
     | '/search'
     | '/assessment/$slug'
+    | '/collections/$slug'
     | '/courses/$slug'
+    | '/cultures/$slug'
     | '/learn/$slug'
+    | '/paths/$slug'
+    | '/programmes/$slug'
+    | '/regions/$slug'
+    | '/subjects/$slug'
     | '/courses'
+    | '/paths'
   id:
     | '__root__'
     | '/'
     | '/account'
     | '/certificates'
+    | '/explore'
     | '/instructors'
     | '/my-learning'
     | '/onye-ozi'
@@ -178,25 +267,39 @@ export interface FileRouteTypes {
     | '/resources'
     | '/search'
     | '/assessment/$slug'
+    | '/collections/$slug'
     | '/courses/$slug'
+    | '/cultures/$slug'
     | '/learn/$slug'
+    | '/paths/$slug'
+    | '/programmes/$slug'
+    | '/regions/$slug'
+    | '/subjects/$slug'
     | '/courses/'
+    | '/paths/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AccountRoute: typeof AccountRoute
   CertificatesRoute: typeof CertificatesRoute
+  ExploreRoute: typeof ExploreRoute
   InstructorsRoute: typeof InstructorsRoute
   MyLearningRoute: typeof MyLearningRoute
   OnyeOziRoute: typeof OnyeOziRoute
-  ProgrammesRoute: typeof ProgrammesRoute
+  ProgrammesRoute: typeof ProgrammesRouteWithChildren
   ResourcesRoute: typeof ResourcesRoute
   SearchRoute: typeof SearchRoute
   AssessmentSlugRoute: typeof AssessmentSlugRoute
+  CollectionsSlugRoute: typeof CollectionsSlugRoute
   CoursesSlugRoute: typeof CoursesSlugRoute
+  CulturesSlugRoute: typeof CulturesSlugRoute
   LearnSlugRoute: typeof LearnSlugRoute
+  PathsSlugRoute: typeof PathsSlugRoute
+  RegionsSlugRoute: typeof RegionsSlugRoute
+  SubjectsSlugRoute: typeof SubjectsSlugRoute
   CoursesIndexRoute: typeof CoursesIndexRoute
+  PathsIndexRoute: typeof PathsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -220,6 +323,13 @@ declare module '@tanstack/react-router' {
       path: '/certificates'
       fullPath: '/certificates'
       preLoaderRoute: typeof CertificatesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/explore': {
+      id: '/explore'
+      path: '/explore'
+      fullPath: '/explore'
+      preLoaderRoute: typeof ExploreRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/instructors': {
@@ -271,6 +381,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AssessmentSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/collections/$slug': {
+      id: '/collections/$slug'
+      path: '/collections/$slug'
+      fullPath: '/collections/$slug'
+      preLoaderRoute: typeof CollectionsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/courses/': {
       id: '/courses/'
       path: '/courses'
@@ -285,6 +402,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CoursesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cultures/$slug': {
+      id: '/cultures/$slug'
+      path: '/cultures/$slug'
+      fullPath: '/cultures/$slug'
+      preLoaderRoute: typeof CulturesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/learn/$slug': {
       id: '/learn/$slug'
       path: '/learn/$slug'
@@ -292,23 +416,77 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LearnSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/paths/': {
+      id: '/paths/'
+      path: '/paths'
+      fullPath: '/paths/'
+      preLoaderRoute: typeof PathsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/paths/$slug': {
+      id: '/paths/$slug'
+      path: '/paths/$slug'
+      fullPath: '/paths/$slug'
+      preLoaderRoute: typeof PathsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/programmes/$slug': {
+      id: '/programmes/$slug'
+      path: '/$slug'
+      fullPath: '/programmes/$slug'
+      preLoaderRoute: typeof ProgrammesSlugRouteImport
+      parentRoute: typeof ProgrammesRoute
+    }
+    '/regions/$slug': {
+      id: '/regions/$slug'
+      path: '/regions/$slug'
+      fullPath: '/regions/$slug'
+      preLoaderRoute: typeof RegionsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/subjects/$slug': {
+      id: '/subjects/$slug'
+      path: '/subjects/$slug'
+      fullPath: '/subjects/$slug'
+      preLoaderRoute: typeof SubjectsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
+
+interface ProgrammesRouteChildren {
+  ProgrammesSlugRoute: typeof ProgrammesSlugRoute
+}
+
+const ProgrammesRouteChildren: ProgrammesRouteChildren = {
+  ProgrammesSlugRoute: ProgrammesSlugRoute,
+}
+
+const ProgrammesRouteWithChildren = ProgrammesRoute._addFileChildren(
+  ProgrammesRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AccountRoute: AccountRoute,
   CertificatesRoute: CertificatesRoute,
+  ExploreRoute: ExploreRoute,
   InstructorsRoute: InstructorsRoute,
   MyLearningRoute: MyLearningRoute,
   OnyeOziRoute: OnyeOziRoute,
-  ProgrammesRoute: ProgrammesRoute,
+  ProgrammesRoute: ProgrammesRouteWithChildren,
   ResourcesRoute: ResourcesRoute,
   SearchRoute: SearchRoute,
   AssessmentSlugRoute: AssessmentSlugRoute,
+  CollectionsSlugRoute: CollectionsSlugRoute,
   CoursesSlugRoute: CoursesSlugRoute,
+  CulturesSlugRoute: CulturesSlugRoute,
   LearnSlugRoute: LearnSlugRoute,
+  PathsSlugRoute: PathsSlugRoute,
+  RegionsSlugRoute: RegionsSlugRoute,
+  SubjectsSlugRoute: SubjectsSlugRoute,
   CoursesIndexRoute: CoursesIndexRoute,
+  PathsIndexRoute: PathsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
