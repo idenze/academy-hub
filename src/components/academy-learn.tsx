@@ -72,7 +72,7 @@ export function Quiz({ questions = sampleQuestions, title, mode }: { questions?:
       </div>
     );
   }
-  const q = questions[i];
+  const q = questions[i]!;
   const correct = pick === q.answer;
   return (
     <div className="assessment-card">

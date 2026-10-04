@@ -9,7 +9,7 @@ export const Route = createFileRoute("/research/$slug")({
   component: Page,
 });
 function Page() { const u = Route.useLoaderData();
-return <AcademyShell><PageIntro eyebrow="Research Mode" title={u.lessons[0]} description="Curiosity → Learning → Study → Research. The detailed academic version of this lesson." />
+return <AcademyShell><PageIntro eyebrow="Research Mode" title={u.lessons[0]!} description="Curiosity → Learning → Study → Research. The detailed academic version of this lesson." />
 <section className="section-pad"><div className="site-wrap grid gap-10 lg:grid-cols-[1fr_20rem]"><article className="lesson-prose">
 <p>The finds at Igbo-Ukwu, excavated by Thurstan Shaw between 1959 and 1964, comprise ritual vessels, regalia and over 100,000 glass and stone beads. Their radiocarbon dates place them in the ninth to tenth centuries CE.<sup>1</sup></p>
 <h2>Competing interpretations</h2>

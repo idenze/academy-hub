@@ -28,7 +28,7 @@ export const regions: Topic[] = [
 export const collections: Topic[] = [
   "African Civilisations", "African Kingdoms and States", "African Archaeology", "African Languages", "African Traditional Religions and Worldviews",
   "African Art and Material Culture", "African Political Systems", "African Trade and Economic History", "African Colonial History", "African Diaspora",
-].map((title, i) => ({ slug: title.toLowerCase().replace(/[^a-z]+/g, "-"), title, summary: "A curated collection of courses, lessons, sources and archive items for sustained study.", courses: [courses[i % courses.length].slug, courses[(i + 2) % courses.length].slug], cultures: ["igbo", "yoruba", "edo"].slice(0, (i % 3) + 1) }));
+].map((title, i) => ({ slug: title.toLowerCase().replace(/[^a-z]+/g, "-"), title, summary: "A curated collection of courses, lessons, sources and archive items for sustained study.", courses: [courses[i % courses.length]!.slug, courses[(i + 2) % courses.length]!.slug], cultures: ["igbo", "yoruba", "edo"].slice(0, (i % 3) + 1) }));
 
 export const profileSections = ["Geography and regions", "Language", "Origins and historical development", "Political organisation", "Religion and worldview", "Economy and trade", "Family and social organisation", "Marriage and life-cycle traditions", "Festivals and ceremonies", "Food and material culture", "Art, architecture and technology", "Archaeology", "Colonial and modern history", "Diaspora", "Further study and sources"];
 export type Culture = { slug: string; name: string; region: string; language: string; summary: string; facts: Record<string, string> };
@@ -44,7 +44,7 @@ export const cultures: Culture[] = [
 export const paths = [
   "Study Igbo History", "Study Yoruba History", "Study African Kingdoms", "Study African Archaeology", "Study African Traditional Religions",
   "Study African Languages", "Study African Art and Material Culture", "Study African Political Systems", "Study Colonial Africa", "Study the African Diaspora",
-].map((title, i) => ({ slug: title.toLowerCase().replace("study ", "").replace(/[^a-z]+/g, "-"), title, summary: "A guided sequence that answers: what should I study next to understand this subject?", steps: [courses[i % 6].slug, courses[(i + 1) % 6].slug, courses[(i + 3) % 6].slug] }));
+].map((title, i) => ({ slug: title.toLowerCase().replace("study ", "").replace(/[^a-z]+/g, "-"), title, summary: "A guided sequence that answers: what should I study next to understand this subject?", steps: [courses[i % 6]!.slug, courses[(i + 1) % 6]!.slug, courses[(i + 3) % 6]!.slug] }));
 
 export const programmes = [
   { slug: "igbo-language-expression", n: "01", title: "Igbo Language & Expression", summary: "From first sounds to confident speech, reading and writing.", meta: "4 courses · 24 weeks", steps: ["igbo-language-foundations", "proverbs-literature", "cosmology-epistemology", "oral-history-methods"] },
@@ -88,4 +88,4 @@ export const mapSites = [
   { name: "Benin City", kind: "Historical state", x: 45, y: 60, culture: "edo" },
 ];
 
-export const classroom = { name: "HIS 204 · University of Nigeria seminar", students: 24, assigned: "Unit: Early Igbo Civilisation", conceptInsights: concepts.slice(0, 4).map((c, i) => ({ ...c, proficientShare: [72, 41, 28, 88][i] })) };
+export const classroom = { name: "HIS 204 · University of Nigeria seminar", students: 24, assigned: "Unit: Early Igbo Civilisation", conceptInsights: concepts.slice(0, 4).map((c, i) => ({ ...c, proficientShare: [72, 41, 28, 88][i]! })) };
