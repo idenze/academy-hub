@@ -2,10 +2,53 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { AcademyShell } from "@/components/academy-shell";
 import { PageIntro } from "@/components/academy-ui";
+import { Button } from "@/components/ui/button";
 import { mapSites } from "@/data/academy";
 import { meta } from "@/lib/meta";
-export const Route = createFileRoute("/map")({ head: () => meta("Interactive map", "Historical states, archaeological sites and ritual centres of southern Nigeria."), component: Page });
-function Page() { const [sel, setSel] = useState(0); const s = mapSites[sel]!;
-return <AcademyShell><PageIntro eyebrow="Interactive map" title="Sites, states and centres" description="Positions are schematic. Boundaries of historical states were fluid and are not drawn with false precision." />
-<section className="section-pad"><div className="site-wrap grid gap-8 lg:grid-cols-[1fr_20rem]"><div className="map-canvas" role="group" aria-label="Schematic map">{mapSites.map((m, i) => <button key={m.name} style={{ left: `${m.x}%`, top: `${m.y}%` }} aria-pressed={sel === i} onClick={() => setSel(i)}><span className="sr-only">{m.name}</span></button>)}<span className="map-label" style={{ left: "52%", top: "86%" }}>Niger Delta</span></div>
-<aside className="details-aside"><p className="eyebrow text-primary">{s.kind}</p><h3 className="mt-2 text-2xl">{s.name}</h3><Link className="text-link mt-4" to="/cultures/$slug" params={{ slug: s.culture }}>Culture profile</Link><h4 className="mt-8 text-xs font-bold uppercase tracking-caps text-muted-foreground">Text alternative</h4><ul className="mt-2 grid gap-1 text-sm">{mapSites.map((m, i) => <li key={m.name}><button className="underline-offset-2 hover:underline" onClick={() => setSel(i)}>{m.name}</button> — {m.kind}</li>)}</ul></aside></div></section></AcademyShell>; }
+export const Route = createFileRoute("/map")({ head: () => meta("African learning map", "Explore selected African historical cities, states, archaeological sites and cultural centres."), component: Page });
+
+function Page() {
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const selectedSite = mapSites[selectedIndex] ?? mapSites[0];
+
+  if (!selectedSite) return null;
+
+  return <AcademyShell>
+    <PageIntro eyebrow="African learning map" title="Places that open wider histories" description="Select any labelled point to see why the place matters. Positions are schematic, and historical boundaries are not presented as fixed." />
+    <section className="section-pad">
+      <div className="site-wrap map-layout">
+        <div className="map-canvas" role="group" aria-label="Schematic map of selected African historical places">
+          <div className="africa-silhouette" aria-hidden="true" />
+          {mapSites.map((site, index) => (
+            <Button
+              key={site.name}
+              variant="ghost"
+              className="map-marker"
+              style={{ left: `${site.x}%`, top: `${site.y}%` }}
+              aria-pressed={selectedIndex === index}
+              aria-label={`Show ${site.name}, ${site.kind}`}
+              onClick={() => setSelectedIndex(index)}
+            >
+              <span className="map-marker-dot" />
+              <span className="map-marker-name">{site.name}</span>
+            </Button>
+          ))}
+        </div>
+        <aside className="details-aside map-details" aria-live="polite">
+          <p className="eyebrow text-primary">{selectedSite.region} · {selectedSite.kind}</p>
+          <h2>{selectedSite.name}</h2>
+          <p>{selectedSite.description}</p>
+          <Link className="text-link" to="/cultures/$slug" params={{ slug: selectedSite.culture }}>Explore the related people</Link>
+          <h3>All mapped places</h3>
+          <ul className="map-site-list">
+            {mapSites.map((site, index) => <li key={site.name}>
+              <Button variant={selectedIndex === index ? "default" : "ghost"} onClick={() => setSelectedIndex(index)} aria-pressed={selectedIndex === index}>
+                <span>{site.name}</span><small>{site.region}</small>
+              </Button>
+            </li>)}
+          </ul>
+        </aside>
+      </div>
+    </section>
+  </AcademyShell>;
+}
