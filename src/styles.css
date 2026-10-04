@@ -256,10 +256,10 @@
   .certificate-note { display: grid; grid-template-columns: 1.5rem 1fr; gap: .7rem; border-top: 1px solid var(--border); padding-top: 1.2rem; }
   .certificate-note svg { color: var(--primary); }
   .certificate-note p { margin-top: .35rem; color: var(--muted-foreground); font-size: .75rem; line-height: 1.5; }
-  .pathway { display: grid; grid-template-columns: 1.05fr .95fr auto; gap: 3rem; align-items: center; border-top: 1px solid var(--border); padding-block: 2.5rem; }
-  .pathway h2 { margin: .6rem 0 1rem; }
+  .pathway { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(18rem, .95fr) auto; gap: 3rem; align-items: center; border-top: 1px solid var(--border); padding-block: 2.5rem; }
+  .pathway h2 { max-width: none; margin: .6rem 0 1rem; font-size: clamp(1.65rem, 2.45vw, 2.35rem); line-height: 1.12; white-space: nowrap; }
   .pathway > div > p:not(.eyebrow) { max-width: 540px; color: var(--muted-foreground); line-height: 1.7; }
-  .path-number { float: left; margin-right: 1rem; color: var(--gold); font-family: Georgia, serif; font-size: 2rem; }
+  .path-number { float: left; min-width: 2rem; margin: .15rem 1rem 0 0; color: var(--gold); font-family: Georgia, serif; font-size: 1.65rem; line-height: 1; }
   .pathway ol { display: grid; gap: .8rem; padding: 0; list-style: none; }
   .pathway li { display: flex; align-items: center; gap: .8rem; }
   .pathway li svg { width: 1.1rem; color: var(--primary); }
@@ -361,6 +361,8 @@
 
 @media (max-width: 900px) {
   .article-grid, .pathway, .lesson-layout, .assistant-page { grid-template-columns: 1fr; }
+  .pathway { gap: 2rem; }
+  .pathway h2 { white-space: normal; }
   .details-aside { order: -1; }
   .lesson-nav, .lesson-tools { display: none; }
   .chat-panel { height: 620px; margin: 0 1rem 2rem; }
