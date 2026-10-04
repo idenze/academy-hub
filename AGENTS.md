@@ -10,3 +10,4 @@
 <!-- LOVABLE:END -->
 
 - Keep the Academy front end data-driven through `src/data/academy.ts` so catalogue, detail, and learning views remain consistent.
+- The Academy belongs inside the main Ozikoro project and must use its single shared authentication, profile, role, and admin data source so registration applies everywhere.
